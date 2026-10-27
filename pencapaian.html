@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PENCAPAIAN TAHUNAN — JPH PKK</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="header-icon">🏆</div>
+        <div>
+          <h1>PENCAPAIAN TAHUNAN PENSYARAH</h1>
+          <p class="subtitle">Jabatan Pelancongan &amp; Hospitaliti — Politeknik Kota Kinabalu</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-date" id="headerDate"></span>
+        <span id="tahunLabel" class="semester-badge" contenteditable="true" title="Klik untuk edit tahun">Tahun 2025</span>
+      </div>
+    </div>
+    <nav class="page-nav">
+      <div class="page-nav-inner">
+        <a href="index.html" class="page-nav-link">
+          <span class="nav-icon">📋</span> Dashboard Fail &amp; Kursus
+        </a>
+        <a href="pencapaian.html" class="page-nav-link active">
+          <span class="nav-icon">🏆</span> Pencapaian Tahunan
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content-wrapper">
+
+    <!-- MAKLUMAT PENSYARAH -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">👤</div>
+        <h2 class="section-title">Maklumat Pensyarah</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-field">
+          <label>Nama Pensyarah</label>
+          <div class="editable" contenteditable="true" id="namaPensyarah">Nama Pensyarah</div>
+        </div>
+        <div class="info-field">
+          <label>No. Staf</label>
+          <div class="editable" contenteditable="true" id="noStaf">PKK-XXXX</div>
+        </div>
+        <div class="info-field">
+          <label>Program</label>
+          <div class="editable" contenteditable="true" id="namaProgram">Hospitaliti / Pelancongan</div>
+        </div>
+        <div class="info-field">
+          <label>Jawatan</label>
+          <div class="editable" contenteditable="true" id="jawatan">Pensyarah</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD RINGKASAN KPI -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">📊</div>
+        <h2 class="section-title">Dashboard Ringkasan KPI</h2>
+      </div>
+      <div class="cards-grid" id="summaryCards">
+        <!-- Dijana oleh JS -->
+      </div>
+    </section>
+
+    <!-- BAHAGIAN 1: LATIHAN / KURSUS / BENGKEL -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">🎓</div>
+        <h2 class="section-title">Bahagian 1 — Latihan / Kursus / Bengkel</h2>
+      </div>
+      <div class="kpi-target-row">
+        <span class="kpi-target-label">Sasaran KPI:</span>
+        <span class="kpi-count-box" id="kpi1Box">0 aktiviti</span>
+        <span class="kpi-target-label">— Sasaran: <input type="number" id="target1" value="2" min="0" style="width:46px;padding:0.1rem 0.3rem;border:1.5px solid var(--color-border);border-radius:4px;font-size:0.75rem;font-family:inherit;" onchange="refreshSummary()"> aktiviti/tahun</span>
+      </div>
+      <p class="section-note">Rekodkan semua latihan, kursus, bengkel, taklimat, seminar dalaman/luaran yang dihadiri.</p>
+      <div id="container1"></div>
+      <div class="action-row">
+        <button class="btn btn-add" onclick="addActivity(1)">＋ Tambah Aktiviti</button>
+      </div>
+    </section>
+
+    <!-- BAHAGIAN 2: SUMBANGAN -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">🤝</div>
+        <h2 class="section-title">Bahagian 2 — Sumbangan</h2>
+      </div>
+      <div class="kpi-target-row">
+        <span class="kpi-target-label">Sasaran KPI:</span>
+        <span class="kpi-count-box" id="kpi2Box">0 aktiviti</span>
+        <span class="kpi-target-label">— Sasaran: <input type="number" id="target2" value="2" min="0" style="width:46px;padding:0.1rem 0.3rem;border:1.5px solid var(--color-border);border-radius:4px;font-size:0.75rem;font-family:inherit;" onchange="refreshSummary()"> aktiviti/tahun</span>
+      </div>
+      <p class="section-note">Sumbangan kepada komuniti, industri, institusi, jawatankuasa luar, dan khidmat masyarakat.</p>
+      <div id="container2"></div>
+      <div class="action-row">
+        <button class="btn btn-add" onclick="addActivity(2)">＋ Tambah Aktiviti</button>
+      </div>
+    </section>
+
+    <!-- BAHAGIAN 3: INOVASI -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">💡</div>
+        <h2 class="section-title">Bahagian 3 — Inovasi &amp; Penambahbaikan</h2>
+      </div>
+      <div class="kpi-target-row">
+        <span class="kpi-target-label">Sasaran KPI:</span>
+        <span class="kpi-count-box" id="kpi3Box">0 projek</span>
+        <span class="kpi-target-label">— Sasaran: <input type="number" id="target3" value="1" min="0" style="width:46px;padding:0.1rem 0.3rem;border:1.5px solid var(--color-border);border-radius:4px;font-size:0.75rem;font-family:inherit;" onchange="refreshSummary()"> projek/tahun</span>
+      </div>
+      <p class="section-note">Projek inovasi, penambahbaikan proses PdP, penghasilan bahan baharu, dan R&amp;D dalaman.</p>
+      <div id="container3"></div>
+      <div class="action-row">
+        <button class="btn btn-add" onclick="addActivity(3)">＋ Tambah Projek</button>
+      </div>
+    </section>
+
+    <!-- BAHAGIAN 4: RESEARCH & PEMBENTANGAN -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">🔬</div>
+        <h2 class="section-title">Bahagian 4 — Research &amp; Pembentangan</h2>
+      </div>
+      <div class="kpi-target-row">
+        <span class="kpi-target-label">Sasaran KPI:</span>
+        <span class="kpi-count-box" id="kpi4Box">0 kertas</span>
+        <span class="kpi-target-label">— Sasaran: <input type="number" id="target4" value="1" min="0" style="width:46px;padding:0.1rem 0.3rem;border:1.5px solid var(--color-border);border-radius:4px;font-size:0.75rem;font-family:inherit;" onchange="refreshSummary()"> kertas/tahun</span>
+      </div>
+      <p class="section-note">Penyelidikan, penerbitan artikel/jurnal, pembentangan kertas kerja, dan kolaborasi penyelidikan.</p>
+      <div id="container4"></div>
+      <div class="action-row">
+        <button class="btn btn-add" onclick="addActivity(4)">＋ Tambah Penyelidikan</button>
+      </div>
+    </section>
+
+    <!-- BAHAGIAN 5: TUGAS SAMPINGAN -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">📋</div>
+        <h2 class="section-title">Bahagian 5 — Tugas Sampingan &amp; Lain-lain</h2>
+      </div>
+      <div class="kpi-target-row">
+        <span class="kpi-target-label">Jumlah rekod:</span>
+        <span class="kpi-count-box" id="kpi5Box">0 tugas</span>
+      </div>
+      <p class="section-note">Jawatankuasa dalaman, tugas khas, pengawasan pelajar, mentor, urusetia, dan tanggungjawab tambahan.</p>
+      <div id="container5"></div>
+      <div class="action-row">
+        <button class="btn btn-add" onclick="addActivity(5)">＋ Tambah Tugas</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Jabatan Pelancongan &amp; Hospitaliti — Politeknik Kota Kinabalu &nbsp;|&nbsp; <span id="footerYear"></span></p>
+  </footer>
+
+  <script src="pencapaian.js"></script>
+</body>
+</html>

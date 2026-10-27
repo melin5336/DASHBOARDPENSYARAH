@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DASHBOARD PENSYARAH — JPH PKK</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="header-icon">📋</div>
+        <div>
+          <h1>DASHBOARD PENSYARAH</h1>
+          <p class="subtitle">Jabatan Pelancongan &amp; Hospitaliti — Politeknik Kota Kinabalu</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-date" id="headerDate"></span>
+        <span id="semesterLabel" class="semester-badge" contenteditable="true" title="Klik untuk edit semester">Sem 1 | 2025/2026</span>
+      </div>
+    </div>
+    <nav class="page-nav">
+      <div class="page-nav-inner">
+        <a href="index.html" class="page-nav-link active">
+          <span class="nav-icon">📋</span> Dashboard Fail &amp; Kursus
+        </a>
+        <a href="pencapaian.html" class="page-nav-link">
+          <span class="nav-icon">🏆</span> Pencapaian Tahunan
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content-wrapper">
+
+    <!-- DASHBOARD RINGKASAN -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">📊</div>
+        <h2 class="section-title">Dashboard Ringkasan</h2>
+      </div>
+      <div class="cards-grid" id="summaryCards">
+        <!-- Kad ringkasan dijana oleh JS -->
+      </div>
+    </section>
+
+    <!-- MAKLUMAT PENSYARAH -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">👤</div>
+        <h2 class="section-title">Maklumat Pensyarah</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-field">
+          <label>Nama Pensyarah</label>
+          <div class="editable" contenteditable="true" id="namaPensyarah">Nama Pensyarah</div>
+        </div>
+        <div class="info-field">
+          <label>No. Staf</label>
+          <div class="editable" contenteditable="true" id="noStaf">PKK-XXXX</div>
+        </div>
+        <div class="info-field">
+          <label>Program</label>
+          <div class="editable" contenteditable="true" id="namaProgram">Hospitaliti / Pelancongan</div>
+        </div>
+        <div class="info-field">
+          <label>Jawatan</label>
+          <div class="editable" contenteditable="true" id="jawatan">Pensyarah</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BAHAGIAN A: PERANCANGAN AKADEMIK -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">📁</div>
+        <h2 class="section-title">Bahagian A — Maklumat Perancangan Akademik</h2>
+      </div>
+      <p class="section-note">Sumber: iFRP &nbsp;|&nbsp; Kemaskini sekali per semester</p>
+      <table class="checklist-table" id="tablePerancangan">
+        <thead>
+          <tr>
+            <th style="width:3%">Bil</th>
+            <th>Dokumen</th>
+            <th style="width:12%">Sumber</th>
+            <th style="width:13%">Status</th>
+            <th style="width:15%">Tarikh Kemaskini</th>
+            <th>Catatan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Kalendar Akademik</td>
+            <td><span class="badge badge-ifrp">iFRP</span></td>
+            <td><select class="status-select" onchange="updateStatus(this);refreshSummary()"><option value="">— Pilih —</option><option value="selesai">✅ Selesai</option><option value="proses">⚠️ Dalam Proses</option><option value="belum">❌ Belum Ada</option><option value="na">N/A</option></select></td>
+            <td><input type="date" class="date-input" /></td>
+            <td><input type="text" class="note-input" placeholder="Catatan..." /></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Takwim PdP Institusi</td>
+            <td><span class="badge badge-ifrp">iFRP</span></td>
+            <td><select class="status-select" onchange="updateStatus(this);refreshSummary()"><option value="">— Pilih —</option><option value="selesai">✅ Selesai</option><option value="proses">⚠️ Dalam Proses</option><option value="belum">❌ Belum Ada</option><option value="na">N/A</option></select></td>
+            <td><input type="date" class="date-input" /></td>
+            <td><input type="text" class="note-input" placeholder="Catatan..." /></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Jadual Waktu Pensyarah</td>
+            <td><span class="badge badge-ifrp">iFRP</span></td>
+            <td><select class="status-select" onchange="updateStatus(this);refreshSummary()"><option value="">— Pilih —</option><option value="selesai">✅ Selesai</option><option value="proses">⚠️ Dalam Proses</option><option value="belum">❌ Belum Ada</option><option value="na">N/A</option></select></td>
+            <td><input type="date" class="date-input" /></td>
+            <td><input type="text" class="note-input" placeholder="Catatan..." /></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Maklumat Program</td>
+            <td><span class="badge badge-ifrp">iFRP</span></td>
+            <td><select class="status-select" onchange="updateStatus(this);refreshSummary()"><option value="">— Pilih —</option><option value="selesai">✅ Selesai</option><option value="proses">⚠️ Dalam Proses</option><option value="belum">❌ Belum Ada</option><option value="na">N/A</option></select></td>
+            <td><input type="date" class="date-input" /></td>
+            <td><input type="text" class="note-input" placeholder="Catatan..." /></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- BAHAGIAN B: CHECKLIST SETIAP KURSUS -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">📚</div>
+        <h2 class="section-title">Bahagian B — Checklist Setiap Kursus</h2>
+      </div>
+      <p class="section-note">Klik nama kursus untuk edit. Tambah atau buang kursus menggunakan butang di bawah.</p>
+
+      <div id="kursusContainer">
+        <!-- Kursus dijana oleh JS -->
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-add" onclick="addKursus()">＋ Tambah Kursus</button>
+        <p style="margin-top:0.5rem;font-size:0.76rem;color:var(--color-muted);">Maksimum 8 kursus. Klik nama kursus pada bar hijau untuk edit nama dan kod kursus.</p>
+      </div>
+    </section>
+
+    <!-- BAHAGIAN C: FAIL PENYELARAS KURSUS -->
+    <section class="section-block">
+      <div class="section-header">
+        <div class="section-icon">🗂️</div>
+        <h2 class="section-title">Bahagian C — Fail Penyelaras Kursus</h2>
+      </div>
+      <p class="section-note">Klik nama kursus pada bar hijau untuk edit nama dan kod. Tambah atau buang fail penyelaras menggunakan butang di bawah.</p>
+
+      <div id="penyelarasContainer">
+        <!-- dijana oleh JS -->
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-add" onclick="addPenyelaras()">＋ Tambah Fail Penyelaras</button>
+        <p style="margin-top:0.5rem;font-size:0.76rem;color:var(--color-muted);">Maksimum 8 fail penyelaras. Sesuai jika anda menjaga lebih daripada satu kursus sebagai penyelaras.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Jabatan Pelancongan &amp; Hospitaliti — Politeknik Kota Kinabalu &nbsp;|&nbsp; <span id="footerYear"></span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
